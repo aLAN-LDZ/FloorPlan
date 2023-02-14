@@ -1,5 +1,15 @@
 # OBRAZKI
 elements:
+  # MENU DOLNE
+  - entity: input_boolean.menu_parter
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/parter/menu.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
   # SUFIT SALON
   - entity: light.sufit_salon
     state_image:
@@ -144,7 +154,7 @@ elements:
 
   # GORNA BELKA
   # ZAMEK
-  - entity: lock.lock
+  - entity: lock.lock_66a3
     style:
       top: 0.2%
       left: 60.3%
@@ -152,7 +162,7 @@ elements:
     type: custom:hui-element
     row_type: custom:mushroom-lock-card
   # ALARM
-  - entity: alarm_control_panel.alarm
+  - entity: alarm_control_panel.alarmo
     style:
       top: 15.7%
       left: 60.3%
@@ -196,8 +206,35 @@ elements:
         - width: 110%
     type: custom:hui-element
     row_type: custom:button-card
+
+  #DOLNE MENU
+  # DRUKARKA
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "on"
+    elements:
+      - entity: switch.drukarka3d_mss210rtl_main_channel
+        style:
+          top: 50%
+          left: 50%
+        show_entity_picture: true
+        show_name: true
+        styles:
+          card:
+            - height: 165px
+            - width: 150px
+          name:
+            - font-size: 16px
+          label:
+            - font-size: 10px
+            - color: transparent
+          icon:
+            - width: 110%
+        type: custom:hui-element
+        row_type: custom:button-card
   # ALAN
-  - entity: person.alan
+  - entity: person.szakalldz
     style:
       top: 12.7%
       left: 7%
@@ -209,7 +246,7 @@ elements:
           return `<span style='vertical-align: 1px'>📱</span><ha-icon icon='${i}' style='width: 16px; vertical-align:2px'></ha-icon>${b}%`
         ]]]
     show_entity_picture: true
-    entity_picture: /local/floor_plan/alan3.gif
+    entity_picture: /local/floor_plan/alan.gif
     show_name: true
     show_last_changed: true
     triggers_update: all
