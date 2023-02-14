@@ -97,61 +97,91 @@ elements:
   ########################################################################################################################
   ###################################################### IKONY ###########################################################
   # SUFIT SALON
-  - entity: light.sufit_salon
-    style:
-      "--mdc-icon-size": 20px
-      "--paper-item-icon-color": white
-      left: 52%
-      top: 70%
-    tap_action:
-      action: toggle
-    type: state-icon
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: light.sufit_salon
+        style:
+          "--mdc-icon-size": 20px
+          "--paper-item-icon-color": white
+          left: 52%
+          top: 70%
+        tap_action:
+          action: toggle
+        type: state-icon
   # SUFIT JADALNIA
-  - entity: light.sufit_jadalnia
-    style:
-      "--mdc-icon-size": 20px
-      "--paper-item-icon-color": white
-      left: 40%
-      top: 66%
-    tap_action:
-      action: toggle
-    type: state-icon
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: light.sufit_jadalnia
+        style:
+          "--mdc-icon-size": 20px
+          "--paper-item-icon-color": white
+          left: 40%
+          top: 66%
+        tap_action:
+          action: toggle
+        type: state-icon
   # SUFIT KUCHNIA
-  - entity: light.sufit_kuchnia
-    style:
-      "--mdc-icon-size": 20px
-      "--paper-item-icon-color": white
-      left: 32%
-      top: 62%
-    tap_action:
-      action: toggle
-    type: state-icon
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: light.sufit_kuchnia
+        style:
+          "--mdc-icon-size": 20px
+          "--paper-item-icon-color": white
+          left: 32%
+          top: 62%
+        tap_action:
+          action: toggle
+        type: state-icon
   # TV
-  - entity: media_player.rzutnik
-    style:
-      "--mdc-icon-size": 20px
-      "--paper-item-icon-color": white
-      left: 56%
-      top: 62%
-    tap_action:
-      action: toggle
-    type: state-icon
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: media_player.rzutnik
+        style:
+          "--mdc-icon-size": 20px
+          "--paper-item-icon-color": white
+          left: 56%
+          top: 62%
+        tap_action:
+          action: toggle
+        type: state-icon
   # TEMP KUCHNIA
-  - entity: sensor.temp_sensor_kuchnia_temperature
-    style:
-      left: 21%
-      top: 72%
-      color: transparent
-      transform: scale(0.7,0.7)
-    type: state-badge
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: sensor.temp_sensor_kuchnia_temperature
+        style:
+          left: 21%
+          top: 72%
+          color: transparent
+          transform: scale(0.7,0.7)
+        type: state-badge
   # TEMP SALON
-  - entity: sensor.temperature_sensor
-    style:
-      left: 62%
-      top: 65%
-      color: transparent
-      transform: scale(0.7,0.7)
-    type: state-badge
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: sensor.temperature_sensor
+        style:
+          top: 65%
+          left: 62%
+          color: transparent
+          transform: scale(0.7,0.7)
+        type: state-badge
   ########################################################################################################################
   ###################################################### GORNE MENU ######################################################
   # ALAN
@@ -333,8 +363,8 @@ elements:
     elements:
       - entity: switch.drukarka3d_mss210rtl_main_channel
         style:
-          top: 50%
-          left: 50%
+          top: 39%
+          left: 26.2%
         show_entity_picture: true
         show_name: true
         styles:
@@ -347,7 +377,12 @@ elements:
             - font-size: 10px
             - color: transparent
           icon:
-            - width: 110%
+            - width: 80%
+        entity_picture: /local/floor_plan/drukarka.png
+        state:
+          - value: "off"
+            styles:
+            entity_picture: /local/floor_plan/drukarka_off.png
         type: custom:hui-element
         row_type: custom:button-card
 ########################################################################################################################
