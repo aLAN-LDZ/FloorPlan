@@ -1,7 +1,7 @@
 ####################################################### OBRAZKI ########################################################
 ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu ###############################
 elements:
-  # SUFIT SALON
+  # ŚWIATŁO - SUFIT SALON
   - entity: light.sufit_salon
     state_image:
       "off": local/floor_plan/parter/transparent.png
@@ -11,7 +11,7 @@ elements:
       top: 50%
       width: 100%
     type: image
-  # SUFIT JADALNIA
+  # ŚWIWATŁO - SUFIT JADALNIA
   - entity: light.sufit_jadalnia
     state_image:
       "off": local/floor_plan/parter/transparent.png
@@ -21,8 +21,8 @@ elements:
       top: 50%
       width: 100%
     type: image
-  # LAMPA SALON
-  - entity: light.lampa
+  # ŚWIATŁO - KORYTARZ
+  - entity: light.pasek_led
     state_image:
       "off": local/floor_plan/parter/transparent.png
       "on": local/floor_plan/parter/swiatlo_korytaz.png
@@ -31,7 +31,7 @@ elements:
       top: 50%
       width: 100%
     type: image
-  # SUFIT BRUDNA
+  # ŚWIATŁO - SUFIT BRUDNA
   - entity: light.lampa
     state_image:
       "off": local/floor_plan/parter/transparent.png
@@ -41,7 +41,7 @@ elements:
       top: 50%
       width: 100%
     type: image
-  # SUFIT KUCHNIA
+  # ŚWIATŁO - SUFIT KUCHNIA
   - entity: light.sufit_kuchnia
     state_image:
       "off": local/floor_plan/parter/transparent.png
@@ -63,8 +63,8 @@ elements:
       top: 50%
       width: 100%
     type: image
-  # DRZWI WEJSCIOWE
-  - entity: binary_sensor.contact_sensor
+  # DRZWI - WEJSCIOWE
+  - entity: binary_sensor.drzwi_wejsciowe
     state_image:
       "off": local/floor_plan/parter/transparent.png
       "on": local/floor_plan/parter/drzwi_wejsciowe.png
@@ -73,12 +73,23 @@ elements:
       top: 50%
       width: 100%
     type: image
-  # DRZWI BRUDNA
-  - entity: sensor.swiatlo_drzwi_kuchnia
+  # DRZWI - BRUDNA KUCHNIA
+  # - entity: sensor.swiatlo_drzwi_kuchnia
+  #   state_image:
+  #     Otwarte-Zapalone: local/floor_plan/parter/drzwi_kuchnia_swiatlo.png
+  #     Zamkniete: local/floor_plan/parter/transparent.png
+  #     Otwarte-Zgaszone: local/floor_plan/parter/drzwi_kuchnia.png
+  #   style:
+  #     left: 50%
+  #     top: 50%
+  #     width: 100%
+  #   type: image
+  # DRZWI - LAZIENKA
+  - entity: sensor.swiatlo_drzwi_lazienka
     state_image:
-      Otwarte-Zapalone: local/floor_plan/parter/drzwi_kuchnia_swiatlo.png
+      Otwarte-Zapalone: local/floor_plan/parter/drzwi_lazienka_swiatlo.png
       Zamkniete: local/floor_plan/parter/transparent.png
-      Otwarte-Zgaszone: local/floor_plan/parter/drzwi_kuchnia.png
+      Otwarte-Zgaszone: local/floor_plan/parter/drzwi_lazienka.png
     style:
       left: 50%
       top: 50%
@@ -94,8 +105,8 @@ elements:
       top: 50%
       width: 100%
     type: image
-  ########################################################################################################################
-  ###################################################### IKONY ###########################################################
+  ######################################################################################################################
+  ###################################################### IKONY #########################################################
   # SUFIT SALON
   - type: conditional
     conditions:
@@ -182,8 +193,8 @@ elements:
           color: transparent
           transform: scale(0.7,0.7)
         type: state-badge
-  ########################################################################################################################
-  ###################################################### GORNE MENU ######################################################
+  ######################################################################################################################
+  ###################################################### GORNE MENU ####################################################
   # ALAN
   - entity: person.szakalldz
     style:
@@ -353,8 +364,8 @@ elements:
         - width: 110%
     type: custom:hui-element
     row_type: custom:button-card
-  ########################################################################################################################
-  ###################################################### DOLNE MENU ######################################################
+  ######################################################################################################################
+  ###################################################### DOLNE MENU ####################################################
   # DRUKARKA
   - type: conditional
     conditions:
