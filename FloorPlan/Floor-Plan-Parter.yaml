@@ -1,15 +1,6 @@
-# OBRAZKI
+####################################################### OBRAZKI ########################################################
+################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu ###############################
 elements:
-  # MENU DOLNE
-  - entity: input_boolean.menu_parter
-    state_image:
-      "off": local/floor_plan/parter/transparent.png
-      "on": local/floor_plan/parter/menu.png
-    style:
-      left: 50%
-      top: 50%
-      width: 100%
-    type: image
   # SUFIT SALON
   - entity: light.sufit_salon
     state_image:
@@ -93,8 +84,18 @@ elements:
       top: 50%
       width: 100%
     type: image
-
-  # IKONY
+  # MENU DOLNE
+  - entity: input_boolean.menu_parter
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/menu.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  ########################################################################################################################
+  ###################################################### IKONY ###########################################################
   # SUFIT SALON
   - entity: light.sufit_salon
     style:
@@ -151,88 +152,8 @@ elements:
       color: transparent
       transform: scale(0.7,0.7)
     type: state-badge
-
-  # GORNA BELKA
-  # ZAMEK
-  - entity: lock.lock_66a3
-    style:
-      top: 0.2%
-      left: 60.3%
-      transform: scale(0.85,0.85)
-    type: custom:hui-element
-    row_type: custom:mushroom-lock-card
-  # ALARM
-  - entity: alarm_control_panel.alarmo
-    style:
-      top: 15.7%
-      left: 60.3%
-      width: 11.2%
-      transform: scale(0.85,0.85)
-    type: custom:hui-element
-    row_type: custom:mushroom-alarm-control-panel-card
-  # GODZINA I POGODA
-  - entity: weather.forecast_dom
-    style:
-      top: 2.1%
-      left: 40%
-      width: 20%
-      transform: scale(1.06,1.06)
-    type: custom:hui-element
-    row_type: custom:clock-weather-card
-    sun_entity: sun.sun
-    forecast_days: 1
-    weather_icon_type: fill
-    hide_today_section: false
-    hide_forecast_section: false
-    hide_clock: false
-    hide_date: false
-  # MENU
-  - entity: input_boolean.menu_parter
-    style:
-      top: 12.7%
-      left: 93%
-    show_entity_picture: true
-    show_name: true
-    styles:
-      card:
-        - height: 165px
-        - width: 150px
-      name:
-        - font-size: 16px
-      label:
-        - font-size: 10px
-        - color: transparent
-      icon:
-        - width: 110%
-    type: custom:hui-element
-    row_type: custom:button-card
-
-  #DOLNE MENU
-  # DRUKARKA
-  - type: conditional
-    conditions:
-      - entity: input_boolean.menu_parter
-        state: "on"
-    elements:
-      - entity: switch.drukarka3d_mss210rtl_main_channel
-        style:
-          top: 50%
-          left: 50%
-        show_entity_picture: true
-        show_name: true
-        styles:
-          card:
-            - height: 165px
-            - width: 150px
-          name:
-            - font-size: 16px
-          label:
-            - font-size: 10px
-            - color: transparent
-          icon:
-            - width: 110%
-        type: custom:hui-element
-        row_type: custom:button-card
+  ########################################################################################################################
+  ###################################################### GORNE MENU ######################################################
   # ALAN
   - entity: person.szakalldz
     style:
@@ -349,6 +270,87 @@ elements:
         - width: 130%
     type: custom:hui-element
     row_type: custom:button-card
-# TLO
+  # GODZINA I POGODA
+  - entity: weather.forecast_dom
+    style:
+      top: 2.1%
+      left: 40%
+      width: 20%
+      transform: scale(1.06,1.06)
+    type: custom:hui-element
+    row_type: custom:clock-weather-card
+    sun_entity: sun.sun
+    forecast_days: 1
+    weather_icon_type: fill
+    hide_today_section: false
+    hide_forecast_section: false
+    hide_clock: false
+    hide_date: false
+  # ZAMEK
+  - entity: lock.lock_66a3
+    style:
+      top: 0.2%
+      left: 60.3%
+      transform: scale(0.85,0.85)
+    type: custom:hui-element
+    row_type: custom:mushroom-lock-card
+  # ALARM
+  - entity: alarm_control_panel.alarmo
+    style:
+      top: 15.7%
+      left: 60.3%
+      width: 11.2%
+      transform: scale(0.85,0.85)
+    type: custom:hui-element
+    row_type: custom:mushroom-alarm-control-panel-card
+  # MENU PARTER
+  - entity: input_boolean.menu_parter
+    style:
+      top: 12.7%
+      left: 93%
+    show_entity_picture: true
+    show_name: true
+    styles:
+      card:
+        - height: 165px
+        - width: 150px
+      name:
+        - font-size: 16px
+      label:
+        - font-size: 10px
+        - color: transparent
+      icon:
+        - width: 110%
+    type: custom:hui-element
+    row_type: custom:button-card
+  ########################################################################################################################
+  ###################################################### DOLNE MENU ######################################################
+  # DRUKARKA
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "on"
+    elements:
+      - entity: switch.drukarka3d_mss210rtl_main_channel
+        style:
+          top: 50%
+          left: 50%
+        show_entity_picture: true
+        show_name: true
+        styles:
+          card:
+            - height: 165px
+            - width: 150px
+          name:
+            - font-size: 16px
+          label:
+            - font-size: 10px
+            - color: transparent
+          icon:
+            - width: 110%
+        type: custom:hui-element
+        row_type: custom:button-card
+########################################################################################################################
+######################################################### TLO ##########################################################
 image: local/floor_plan/parter/parter.png
 type: picture-elements
