@@ -282,11 +282,11 @@ elements:
           - top: 85%
           - font-size: 14px
           - color: >-
-              [[[ if (states["sensor.iphone_aleksandra_battery_level"].state <
+              [[[ if (states["sensor.iphone_battery_level"].state <
               30) return "#e45649"; if
-              (states["sensor.iphone_aleksandra_battery_level"].state < 50)
+              (states["sensor.iphone_battery_level"].state < 50)
               return "#ffa229"; if
-              (states["sensor.iphone_aleksandra_battery_level"].state < 101)
+              (states["sensor.iphone_battery_level"].state < 101)
               return "#50A14F"; else return "#ffc640"]]]
       icon:
         - width: 110%
@@ -341,9 +341,9 @@ elements:
           - top: 85%
           - font-size: 14px
           - color: >-
-              [[[ if (states["sensor.iphone_battery_level"].state < 30) return
-              "#e45649"; if (states["sensor.iphone_battery_level"].state < 50)
-              return "#ffa229"; if (states["sensor.iphone_battery_level"].state
+              [[[ if (states["sensor.iphone_aleksandra_battery_level"].state < 30) return
+              "#e45649"; if (states["sensor.iphone_aleksandra_battery_level"].state < 50)
+              return "#ffa229"; if (states["sensor.iphone_aleksandra_battery_level"].state
               < 101) return "#50A14F"; else return "#ffc640"]]]
       icon:
         - width: 130%
