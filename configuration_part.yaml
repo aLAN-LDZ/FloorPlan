@@ -1,14 +1,5 @@
 template:
   - sensor:
-      - name: "Rzutnik Serwer Source"
-        state: "{{states.media_player.rzutnik.attributes.source}}"
-  - sensor:
-      - name: "Rzutnik Live Source"
-        state: "{{states.media_player.miprojl1_2.attributes.media_title}}"
-  - sensor:
-      - name: "Bateria Tedee"
-        state: "{{states.lock.lock_66a3.attributes.battery_level}}"
-  - sensor:
       - name: "swiatlo drzwi lazienka"
         state: |-
           {% if states('light.pasek_led') == 'on' and states('binary_sensor.drzwi_lazienka') == 'on' %}
