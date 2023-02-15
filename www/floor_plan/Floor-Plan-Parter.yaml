@@ -1,0 +1,427 @@
+####################################################### OBRAZKI ########################################################
+################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu ###############################
+elements:
+  # ŚWIATŁO - SUFIT SALON
+  - entity: light.sufit_salon
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/parter/swiatlo_salon.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  # ŚWIWATŁO - SUFIT JADALNIA
+  - entity: light.sufit_jadalnia
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/parter/swiatlo_jadalnia.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  # ŚWIATŁO - KORYTARZ
+  - entity: light.pasek_led
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/parter/swiatlo_korytaz.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  # ŚWIATŁO - SUFIT BRUDNA
+  - entity: light.lampa
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/parter/swiatlo_brudna.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  # ŚWIATŁO - SUFIT KUCHNIA
+  - entity: light.sufit_kuchnia
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/parter/swiatlo_kuchnia.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  # TV
+  - entity: input_select.xiaomi_source_list
+    state_image:
+      AppleTV: local/floor_plan/parter/tv_appletv.png
+      Desktop: local/floor_plan/parter/transparent.png
+      PS5: local/floor_plan/parter/tv_ps5.png
+      TOYA: local/floor_plan/parter/tv_toya.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  # DRZWI - WEJSCIOWE
+  - entity: binary_sensor.drzwi_wejsciowe
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/parter/drzwi_wejsciowe.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  # DRZWI - BRUDNA KUCHNIA
+  # - entity: sensor.swiatlo_drzwi_kuchnia
+  #   state_image:
+  #     Otwarte-Zapalone: local/floor_plan/parter/drzwi_kuchnia_swiatlo.png
+  #     Zamkniete: local/floor_plan/parter/transparent.png
+  #     Otwarte-Zgaszone: local/floor_plan/parter/drzwi_kuchnia.png
+  #   style:
+  #     left: 50%
+  #     top: 50%
+  #     width: 100%
+  #   type: image
+  # DRZWI - LAZIENKA
+  - entity: sensor.swiatlo_drzwi_lazienka
+    state_image:
+      Otwarte-Zapalone: local/floor_plan/parter/drzwi_lazienka_swiatlo.png
+      Zamkniete: local/floor_plan/parter/transparent.png
+      Otwarte-Zgaszone: local/floor_plan/parter/drzwi_lazienka.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  # MENU DOLNE
+  - entity: input_boolean.menu_parter
+    state_image:
+      "off": local/floor_plan/parter/transparent.png
+      "on": local/floor_plan/menu.png
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    type: image
+  ######################################################################################################################
+  ###################################################### IKONY #########################################################
+  # SUFIT SALON
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: light.sufit_salon
+        style:
+          "--mdc-icon-size": 20px
+          "--paper-item-icon-color": white
+          left: 52%
+          top: 70%
+        tap_action:
+          action: toggle
+        type: state-icon
+  # SUFIT JADALNIA
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: light.sufit_jadalnia
+        style:
+          "--mdc-icon-size": 20px
+          "--paper-item-icon-color": white
+          left: 40%
+          top: 66%
+        tap_action:
+          action: toggle
+        type: state-icon
+  # SUFIT KUCHNIA
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: light.sufit_kuchnia
+        style:
+          "--mdc-icon-size": 20px
+          "--paper-item-icon-color": white
+          left: 32%
+          top: 62%
+        tap_action:
+          action: toggle
+        type: state-icon
+  # TV
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: media_player.rzutnik
+        style:
+          "--mdc-icon-size": 20px
+          "--paper-item-icon-color": white
+          left: 56%
+          top: 62%
+        tap_action:
+          action: toggle
+        type: state-icon
+  # TEMP KUCHNIA
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: sensor.temp_sensor_kuchnia_temperature
+        style:
+          left: 21%
+          top: 72%
+          color: transparent
+          transform: scale(0.7,0.7)
+        type: state-badge
+  # TEMP SALON
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "off"
+    elements:
+      - entity: sensor.temperature_sensor
+        style:
+          top: 65%
+          left: 62%
+          color: transparent
+          transform: scale(0.7,0.7)
+        type: state-badge
+  ######################################################################################################################
+  ###################################################### GORNE MENU ####################################################
+  # ALAN
+  - entity: person.szakalldz
+    style:
+      top: 12.7%
+      left: 7%
+    custom_fields:
+      battery: |
+        [[[
+          var i = states['sensor.iphone_battery_level'].attributes.icon;
+          var b = states['sensor.iphone_battery_level'].state;
+          return `<span style='vertical-align: 1px'>📱</span><ha-icon icon='${i}' style='width: 16px; vertical-align:2px'></ha-icon>${b}%`
+        ]]]
+    show_entity_picture: true
+    entity_picture: /local/floor_plan/alan.gif
+    show_name: true
+    show_last_changed: true
+    triggers_update: all
+    state:
+      - value: "home"
+        name: 🏡 W Domu
+        styles:
+          name:
+            - color: "#7DDA9F"
+            - align-self: right
+            - position: absolute
+            - right: 23%
+            - top: 70%
+        entity_picture: /local/floor_plan/alan1.gif
+      - value: "not_home"
+        name: 🏃‍♂️ Poza Domem
+        styles:
+          name:
+            - color: "#93ADCB"
+            - align-self: right
+            - position: absolute
+            - right: 11%
+            - top: 70%
+        entity_picture: /local/floor_plan/alan_pozadomem.gif
+      - value: "unknown"
+        name: Brak Danych
+        styles:
+          name:
+            - color: gray
+        entity_picture: /local/floor_plan/alan.gif
+    styles:
+      card:
+        - height: 165px
+        - width: 150px
+      name:
+        - font-size: 16px
+      label:
+        - font-size: 10px
+        - color: transparent
+      custom_fields:
+        battery:
+          - align-self: right
+          - position: absolute
+          - right: 32%
+          - top: 85%
+          - font-size: 14px
+          - color: >-
+              [[[ if (states["sensor.iphone_battery_level"].state <
+              30) return "#e45649"; if
+              (states["sensor.iphone_battery_level"].state < 50)
+              return "#ffa229"; if
+              (states["sensor.iphone_battery_level"].state < 101)
+              return "#50A14F"; else return "#ffc640"]]]
+      icon:
+        - width: 110%
+        - top: -13%
+    type: custom:hui-element
+    row_type: custom:button-card
+  # OLA
+  - entity: person.ola
+    style:
+      top: 12.7%
+      left: 19%
+    custom_fields:
+      battery: |
+        [[[
+          var i = states['sensor.iphone_aleksandra_battery_level'].attributes.icon;
+          var b = states['sensor.iphone_aleksandra_battery_level'].state;
+          return `<span style='vertical-align: 1px'>📱</span><ha-icon icon='${i}' style='width: 16px; vertical-align:2px'></ha-icon>${b}%`
+        ]]]
+    show_entity_picture: true
+    show_name: true
+    show_last_changed: true
+    triggers_update: all
+    state:
+      - value: "home"
+        name: 🏡 W Domu
+        styles:
+          name:
+            - color: "#7DDA9F"
+            - align-self: right
+            - position: absolute
+            - right: 23%
+            - top: 70%
+        entity_picture: /local/floor_plan/ola.gif
+      - value: "not_home"
+        name: 🏃‍♂️ Poza Domem
+        styles:
+          name:
+            - color: "#93ADCB"
+            - align-self: right
+            - position: absolute
+            - right: 11%
+            - top: 70%
+        entity_picture: /local/floor_plan/ola_pozadomem1.gif
+      - value: "unknown"
+        name: Brak Danych
+        styles:
+          name:
+            - color: gray
+        entity_picture: /local/floor_plan/ola.gif
+    styles:
+      card:
+        - height: 165px
+        - width: 150px
+      name:
+        - font-size: 16px
+      label:
+        - font-size: 10px
+        - color: transparent
+      custom_fields:
+        battery:
+          - align-self: right
+          - position: absolute
+          - right: 32%
+          - top: 85%
+          - font-size: 14px
+          - color: >-
+              [[[ if (states["sensor.iphone_aleksandra_battery_level"].state < 30) return
+              "#e45649"; if (states["sensor.iphone_aleksandra_battery_level"].state < 50)
+              return "#ffa229"; if (states["sensor.iphone_aleksandra_battery_level"].state
+              < 101) return "#50A14F"; else return "#ffc640"]]]
+      icon:
+        - width: 130%
+        - top: -13%
+    type: custom:hui-element
+    row_type: custom:button-card
+  # GODZINA I POGODA
+  - entity: weather.forecast_dom
+    style:
+      top: 2.1%
+      left: 40%
+      width: 20%
+      transform: scale(1.06,1.06)
+    type: custom:hui-element
+    row_type: custom:clock-weather-card
+    sun_entity: sun.sun
+    forecast_days: 1
+    weather_icon_type: fill
+    hide_today_section: false
+    hide_forecast_section: false
+    hide_clock: false
+    hide_date: false
+  # ZAMEK
+  - entity: lock.lock_66a3
+    style:
+      top: 0.2%
+      left: 60.3%
+      transform: scale(0.85,0.85)
+    type: custom:hui-element
+    row_type: custom:mushroom-lock-card
+  # ALARM
+  - entity: alarm_control_panel.alarmo
+    style:
+      top: 15.7%
+      left: 60.3%
+      width: 11.2%
+      transform: scale(0.85,0.85)
+    type: custom:hui-element
+    row_type: custom:mushroom-alarm-control-panel-card
+  # MENU PARTER
+  - entity: input_boolean.menu_parter
+    style:
+      top: 12.7%
+      left: 93%
+    show_entity_picture: true
+    show_name: true
+    styles:
+      card:
+        - height: 165px
+        - width: 150px
+      name:
+        - font-size: 16px
+      label:
+        - font-size: 10px
+        - color: transparent
+      icon:
+        - width: 110%
+    type: custom:hui-element
+    row_type: custom:button-card
+  ######################################################################################################################
+  ###################################################### DOLNE MENU ####################################################
+  # DRUKARKA
+  - type: conditional
+    conditions:
+      - entity: input_boolean.menu_parter
+        state: "on"
+    elements:
+      - entity: switch.drukarka3d_mss210rtl_main_channel
+        style:
+          top: 39%
+          left: 26.2%
+        show_entity_picture: true
+        show_name: true
+        styles:
+          card:
+            - height: 165px
+            - width: 150px
+          name:
+            - font-size: 16px
+          label:
+            - font-size: 10px
+            - color: transparent
+          icon:
+            - width: 80%
+        entity_picture: /local/floor_plan/drukarka.png
+        state:
+          - value: "off"
+            styles:
+            entity_picture: /local/floor_plan/drukarka_off.png
+        type: custom:hui-element
+        row_type: custom:button-card
+########################################################################################################################
+######################################################### TLO ##########################################################
+image: local/floor_plan/parter/parter.png
+type: picture-elements
