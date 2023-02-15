@@ -264,7 +264,7 @@ elements:
               return "#50A14F"; else return "#ffc640"]]]
       icon:
         - width: 110%
-        - top: -13%
+        - top: -3%
     type: custom:hui-element
     row_type: custom:button-card
   # OLA
@@ -293,7 +293,7 @@ elements:
             - position: absolute
             - right: 23%
             - top: 70%
-        entity_picture: /local/floor_plan/ola.gif
+        entity_picture: /local/floor_plan/ola3.gif
       - value: "not_home"
         name: 🏃‍♂️ Poza Domem
         styles:
@@ -303,7 +303,7 @@ elements:
             - position: absolute
             - right: 11%
             - top: 70%
-        entity_picture: /local/floor_plan/ola_pozadomem1.gif
+        entity_picture: /local/floor_plan/ola_pozadomem2.gif
       - value: "unknown"
         name: Brak Danych
         styles:
