@@ -111,6 +111,16 @@ views:
               top: 50%
               width: 100%
             type: image
+          # Piętro
+          - entity: input_boolean.pietro
+            state_image:
+              "off": local/floor_plan/parter/transparent.png
+              "on": local/floor_plan/pietro/pietro_ipad1.png
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+            type: image
           ######################################################################################################################
           ###################################################### IKONY #########################################################
           # # SUFIT SALON
@@ -133,7 +143,7 @@ views:
           # SUFIT SALON
           - type: conditional
             conditions:
-              - entity: input_boolean.menu_parter
+              - entity: input_boolean.pietro
                 state: "off"
             elements:
               - entity: light.sufit_salon
@@ -147,7 +157,7 @@ views:
           # SUFIT JADALNIA
           - type: conditional
             conditions:
-              - entity: input_boolean.menu_parter
+              - entity: input_boolean.pietro
                 state: "off"
             elements:
               - entity: light.sufit_jadalnia
@@ -162,7 +172,7 @@ views:
           # SUFIT KUCHNIA
           - type: conditional
             conditions:
-              - entity: input_boolean.menu_parter
+              - entity: input_boolean.pietro
                 state: "off"
             elements:
               - entity: light.sufit_kuchnia
@@ -179,7 +189,7 @@ views:
           # TV
           - type: conditional
             conditions:
-              - entity: input_boolean.menu_parter
+              - entity: input_boolean.pietro
                 state: "off"
             elements:
               - entity: media_player.rzutnik
@@ -192,10 +202,29 @@ views:
                 tap_action:
                   action: toggle
                 type: state-icon
+          # Zmiana Pietra
+          # - type: conditional
+          #   conditions:
+          #     - entity: input_boolean.pietro
+          #       state: "off"
+          #   elements:
+          - entity:
+              input_boolean.pietro
+              # icon: phu:sultan-group
+            style:
+              "--mdc-icon-size": 30px
+              "--paper-item-icon-color": white
+              left: 45%
+              top:
+                50%
+                # double_tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia.yaml
+            tap_action:
+              action: toggle
+            type: state-icon
           # TEMP KUCHNIA
           - type: conditional
             conditions:
-              - entity: input_boolean.menu_parter
+              - entity: input_boolean.pietro
                 state: "off"
             elements:
               - entity: sensor.temp_sensor_kuchnia_temperature
@@ -208,7 +237,7 @@ views:
           # TEMP SALON
           - type: conditional
             conditions:
-              - entity: input_boolean.menu_parter
+              - entity: input_boolean.pietro
                 state: "off"
             elements:
               - entity: sensor.temperature_sensor
@@ -408,25 +437,55 @@ views:
             type: custom:hui-element
             row_type: custom:mushroom-alarm-control-panel-card
           # MENU PARTER
-          - entity: input_boolean.menu_parter
-            style:
-              top: 10.8%
-              left: 92.3%
-            show_entity_picture: true
-            show_name: true
-            styles:
-              card:
-                - height: 165px
-                - width: 150px
-              name:
-                - font-size: 16px
-              label:
-                - font-size: 10px
-                - color: transparent
-              icon:
-                - width: 110%
-            type: custom:hui-element
-            row_type: custom:button-card
+          - type: conditional
+            conditions:
+              - entity: input_boolean.pietro
+                state: "off"
+            elements:
+              - entity: input_boolean.menu_parter
+                style:
+                  top: 10.8%
+                  left: 92.3%
+                show_entity_picture: true
+                show_name: true
+                styles:
+                  card:
+                    - height: 165px
+                    - width: 150px
+                  name:
+                    - font-size: 16px
+                  label:
+                    - font-size: 10px
+                    - color: transparent
+                  icon:
+                    - width: 110%
+                type: custom:hui-element
+                row_type: custom:button-card
+          # MENU PPIETRO
+          - type: conditional
+            conditions:
+              - entity: input_boolean.pietro
+                state: "on"
+            elements:
+              - entity: input_boolean.menu_pietro
+                style:
+                  top: 10.8%
+                  left: 92.3%
+                show_entity_picture: true
+                show_name: true
+                styles:
+                  card:
+                    - height: 165px
+                    - width: 150px
+                  name:
+                    - font-size: 16px
+                  label:
+                    - font-size: 10px
+                    - color: transparent
+                  icon:
+                    - width: 110%
+                type: custom:hui-element
+                row_type: custom:button-card
           # Maniek
           - entity: vacuum.maniek
             custom_fields:
