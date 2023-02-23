@@ -1,0 +1,25 @@
+action: fire-dom-event
+browser_mod:
+  service: browser_mod.popup
+  data:
+    card_mod:
+      style:
+        .: |
+          :host {
+            --mdc-theme-surface: rgba(0,0,0,0);
+            --secondary-background-color: rgba(0,0,0,0.6);
+            --ha-card-background: rgba(0,0,0,0.6);
+          }
+          ha-dialog {
+            --vertical-align-dialog: center !important;
+          }
+    content:
+      type: custom:mushroom-alarm-control-panel-card
+      entity: alarm_control_panel.alarmo
+      states:
+        - armed_away
+        - armed_home
+        - armed_night
+        - armed_vacation
+      show_keypad: true
+      layout: vertical

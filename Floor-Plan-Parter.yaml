@@ -5,10 +5,18 @@ views:
     title: Parter
     path: parter
     type: panel
-    badges: []
-    cards:
+    badges:
+      []
+      ####################################################### Dodatki ########################################################
+      #################################                                                        ###############################
+    resources:
+      - url: /hacsfiles/light-popup-card/light-popup-card.js
+        type: module
+      - url: /local/community/custom-brand-icons/custom-brand-icons.js
+        type: js
       ####################################################### OBRAZKI ########################################################
       ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu ###############################
+    cards:
       - elements:
           # ŚWIATŁO - SUFIT SALON
           - entity: light.sufit_salon
@@ -105,6 +113,23 @@ views:
             type: image
           ######################################################################################################################
           ###################################################### IKONY #########################################################
+          # # SUFIT SALON
+          # - type: conditional
+          #   conditions:
+          #     - entity: input_boolean.menu_parter
+          #       state: "off"
+          #   elements:
+          #     - entity: light.sufit_salon
+          #       icon: "phu:sultan-group"
+          #       style:
+          #         "--mdc-icon-size": 30px
+          #         "--paper-item-icon-color": white
+          #         left: 52%
+          #         top: 65%
+          #       tap_action: !include FloorPlan3D/popup/swiatlo_salon405.yaml
+          #       # tap_action:
+          #       #   action: toggle
+          #       type: state-icon
           # SUFIT SALON
           - type: conditional
             conditions:
@@ -113,13 +138,12 @@ views:
             elements:
               - entity: light.sufit_salon
                 style:
-                  "--mdc-icon-size": 20px
-                  "--paper-item-icon-color": white
+                  top: 65%
                   left: 52%
-                  top: 70%
-                tap_action:
-                  action: toggle
-                type: state-icon
+                  color: transparent
+                  transform: scale(0.7,0.7)
+                tap_action: !include FloorPlan3D/popup/swiatlo_salon405.yaml
+                type: state-badge
           # SUFIT JADALNIA
           - type: conditional
             conditions:
@@ -127,13 +151,13 @@ views:
                 state: "off"
             elements:
               - entity: light.sufit_jadalnia
+                icon: "phu:sultan-group"
                 style:
-                  "--mdc-icon-size": 20px
+                  "--mdc-icon-size": 30px
                   "--paper-item-icon-color": white
                   left: 40%
                   top: 66%
-                tap_action:
-                  action: toggle
+                tap_action: !include FloorPlan3D/popup/swiatlo_jadalnia2.yaml
                 type: state-icon
           # SUFIT KUCHNIA
           - type: conditional
@@ -142,11 +166,13 @@ views:
                 state: "off"
             elements:
               - entity: light.sufit_kuchnia
+                icon: phu:sultan-group
                 style:
-                  "--mdc-icon-size": 20px
+                  "--mdc-icon-size": 30px
                   "--paper-item-icon-color": white
                   left: 32%
                   top: 62%
+                double_tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia.yaml
                 tap_action:
                   action: toggle
                 type: state-icon
@@ -157,6 +183,7 @@ views:
                 state: "off"
             elements:
               - entity: media_player.rzutnik
+                icon: "phu:apple-tv-box"
                 style:
                   "--mdc-icon-size": 20px
                   "--paper-item-icon-color": white
@@ -339,14 +366,14 @@ views:
           # GODZINA I POGODA
           - entity: weather.forecast_dom
             style:
-              top: 2.5%
+              top: 1.25%
               left: 34.5% #40%
               width: 20%
-              transform: scale(0.92,0.92)
+              transform: scale(0.90,0.90)
             type: custom:hui-element
             row_type: custom:clock-weather-card
             sun_entity: sun.sun
-            forecast_days: 6
+            forecast_days: 5
             weather_icon_type: fill
             hide_today_section: false
             hide_forecast_section: false
@@ -355,23 +382,28 @@ views:
           # ZAMEK
           - entity: lock.lock_66a3
             style:
-              top: 8.6%
+              top: 8.4%
               left: 59.8%
+              width: 10.9%
+            name: Zamek
             type: custom:hui-element
             row_type: custom:mushroom-lock-card
           # ALARM
           - entity: alarm_control_panel.alarmo
             style:
-              top: 18.3%
+              top: 20.5%
               left: 59.8%
               width: 10.9%
+            states:
+              - armed_away
+            tap_action: !include FloorPlan3D/popup/alarm.yaml
             type: custom:hui-element
             row_type: custom:mushroom-alarm-control-panel-card
           # REZERWACJA
           - entity: alarm_control_panel.alarmo
             style:
-              top: 25.5%
-              left: 59.8%
+              top: 22.8%
+              left: 7.5%
               width: 10.9%
             type: custom:hui-element
             row_type: custom:mushroom-alarm-control-panel-card
@@ -395,24 +427,95 @@ views:
                 - width: 110%
             type: custom:hui-element
             row_type: custom:button-card
-          # REZERWACJA
-          - entity: input_boolean.menu_parter
+          # Maniek
+          - entity: vacuum.maniek
+            custom_fields:
+              battery: |
+                [[[
+                  var i = states['sensor.maniek_battery_level'].attributes.icon;
+                  var b = states['sensor.maniek_battery_level'].state;
+                  return `<span style='vertical-align: 1px'></span><ha-icon icon='${i}' style='width: 16px; vertical-align:2px'></ha-icon>${b}%`
+                ]]]
+            state:
+              - value: docked
+                color: gray
+                styles:
+                  icon:
+                    - margin-top: -25%
+              - value: paused
+                color: gray
+                styles:
+                  icon:
+                    - margin-top: -25%
+                    - animation:
+                        - blink 1s linear infinite
+              - value: returning
+                color: white
+                styles:
+                  icon:
+                    - margin-top: -25%
+                    - animation:
+                        - returning 2s linear infinite
+              - value: cleaning
+                color: white
+                styles:
+                  icon:
+                    - margin-top: -15%
+                    - animation:
+                        - cleaning 2s linear infinite
+            extra_styles: |
+              @keyframes cleaning {
+                0% {transform: rotatez(0deg); top: 5px}
+                25% {transform: rotatez(-25deg); top: -5px}
+                75% {transform: rotatez(25deg); top: -5px}
+                100% {transform: rotatez(0deg); top: 5px}
+              }
+              @keyframes returning {
+                0% {top: -150px; opacity: 0}
+                15% {top: -100px; opacity: 0.5}
+                25% {top: -35px; opacity: 1}
+                75% {top: 15px; opacity: 1}
+                85% {top: 20px; opacity: 0.5}
+                100% {top: 20px; opacity: 0}
+              }
             style:
               top: 10.8%
               left: 80.7%
             show_entity_picture: true
             show_name: true
+            # lock:
+            #   enabled: true
             styles:
               card:
                 - height: 165px
                 - width: 150px
               name:
                 - font-size: 16px
+                - align-self: right
+                - position: absolute
+                - right: 32%
+                - top: 70%
               label:
                 - font-size: 10px
                 - color: transparent
               icon:
-                - width: 110%
+                - width: 78%
+              custom_fields:
+                battery:
+                  - align-self: right
+                  - position: absolute
+                  - right: 36%
+                  - top: 85%
+                  - font-size: 14px
+                  - color: >-
+                      [[[ if
+                      (states["sensor.maniek_battery_level"].state <
+                      30) return "#e45649"; if
+                      (states["sensor.maniek_battery_level"].state <
+                      50) return "#ffa229"; if
+                      (states["sensor.maniek_battery_level"].state <
+                      101) return "#50A14F"; else return "#ffc640"]]]
+            tap_action: !include FloorPlan3D/popup/maniek59.yaml
             type: custom:hui-element
             row_type: custom:button-card
           ######################################################################################################################
@@ -449,5 +552,5 @@ views:
                 row_type: custom:button-card
         ########################################################################################################################
         ######################################################### TLO ##########################################################
-        image: local/floor_plan/parter/parter_ipad_3.png
+        image: local/floor_plan/parter/parter_ipad5.png
         type: picture-elements

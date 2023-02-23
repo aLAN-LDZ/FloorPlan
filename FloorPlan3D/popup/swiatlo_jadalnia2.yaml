@@ -1,0 +1,32 @@
+action: fire-dom-event
+browser_mod:
+  service: browser_mod.popup
+  data:
+    card_mod:
+      style:
+        .: |
+          :host {
+            --mdc-theme-surface: rgba(0,0,0,0);
+            --secondary-background-color: rgba(0,0,0,0.6);
+            --ha-card-background: rgba(0,0,0,0.6);
+          }
+          ha-dialog {
+            --vertical-align-dialog: center !important;
+          }
+    content:
+      type: vertical-stack
+      cards:
+        - type: custom:mushroom-light-card
+          entity: light.sufit_salon
+          use_light_color: true
+          show_brightness_control: true
+          show_color_control: true
+          show_color_temp_control: true
+          collapsible_controls: false
+        - type: custom:mushroom-light-card
+          entity: light.lampa
+          use_light_color: true
+          show_brightness_control: true
+          show_color_control: true
+          show_color_temp_control: true
+          collapsible_controls: false
