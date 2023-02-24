@@ -10,8 +10,6 @@ views:
       ####################################################### Dodatki ########################################################
       #################################                                                        ###############################
     resources:
-      - url: /hacsfiles/light-popup-card/light-popup-card.js
-        type: module
       - url: /local/community/custom-brand-icons/custom-brand-icons.js
         type: js
       ####################################################### OBRAZKI ########################################################
@@ -115,7 +113,7 @@ views:
           - entity: input_boolean.pietro
             state_image:
               "off": local/floor_plan/parter/transparent.png
-              "on": local/floor_plan/pietro/pietro_ipad1.png
+              "on": local/floor_plan/pietro/pietro200.png
             style:
               left: 50%
               top: 50%
@@ -123,130 +121,187 @@ views:
             type: image
           ######################################################################################################################
           ###################################################### IKONY #########################################################
-          # # SUFIT SALON
-          # - type: conditional
-          #   conditions:
-          #     - entity: input_boolean.menu_parter
-          #       state: "off"
-          #   elements:
-          #     - entity: light.sufit_salon
-          #       icon: "phu:sultan-group"
-          #       style:
-          #         "--mdc-icon-size": 30px
-          #         "--paper-item-icon-color": white
-          #         left: 52%
-          #         top: 65%
-          #       tap_action: !include FloorPlan3D/popup/swiatlo_salon405.yaml
-          #       # tap_action:
-          #       #   action: toggle
-          #       type: state-icon
-          # SUFIT SALON
-          - type: conditional
-            conditions:
-              - entity: input_boolean.pietro
-                state: "off"
-            elements:
-              - entity: light.sufit_salon
-                style:
-                  top: 65%
-                  left: 52%
-                  color: transparent
-                  transform: scale(0.7,0.7)
-                tap_action: !include FloorPlan3D/popup/swiatlo_salon405.yaml
-                type: state-badge
-          # SUFIT JADALNIA
-          - type: conditional
-            conditions:
-              - entity: input_boolean.pietro
-                state: "off"
-            elements:
-              - entity: light.sufit_jadalnia
-                icon: "phu:sultan-group"
-                style:
-                  "--mdc-icon-size": 30px
-                  "--paper-item-icon-color": white
-                  left: 40%
-                  top: 66%
-                tap_action: !include FloorPlan3D/popup/swiatlo_jadalnia2.yaml
-                type: state-icon
-          # SUFIT KUCHNIA
-          - type: conditional
-            conditions:
-              - entity: input_boolean.pietro
-                state: "off"
-            elements:
-              - entity: light.sufit_kuchnia
-                icon: phu:sultan-group
-                style:
-                  "--mdc-icon-size": 30px
-                  "--paper-item-icon-color": white
-                  left: 32%
-                  top: 62%
-                double_tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia.yaml
-                tap_action:
-                  action: toggle
-                type: state-icon
           # TV
-          - type: conditional
-            conditions:
-              - entity: input_boolean.pietro
-                state: "off"
-            elements:
-              - entity: media_player.rzutnik
-                icon: "phu:apple-tv-box"
-                style:
-                  "--mdc-icon-size": 20px
-                  "--paper-item-icon-color": white
-                  left: 56%
-                  top: 62%
-                tap_action:
-                  action: toggle
-                type: state-icon
-          # Zmiana Pietra
           # - type: conditional
           #   conditions:
           #     - entity: input_boolean.pietro
           #       state: "off"
           #   elements:
-          - entity:
-              input_boolean.pietro
-              # icon: phu:sultan-group
+          #     - entity: media_player.rzutnik
+          #       icon: "phu:apple-tv-box"
+          #       style:
+          #         "--mdc-icon-size": 20px
+          #         "--paper-item-icon-color": white
+          #         left: 56%
+          #         top: 62%
+          #       tap_action:
+          #         action: toggle
+          #       type: state-icon
+          ######################################################################################################################
+          ###################################################### PLAKIETKI #####################################################
+          ##### ŚWIATLA SALON
+          - type: custom:badge-card
             style:
-              "--mdc-icon-size": 30px
-              "--paper-item-icon-color": white
-              left: 45%
-              top:
-                50%
-                # double_tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia.yaml
-            tap_action:
-              action: toggle
-            type: state-icon
-          # TEMP KUCHNIA
-          - type: conditional
-            conditions:
+              top: 73.5%
+              left: 51.5%
+              transform: scale(0.8,0.8)
+            badges:
+              - entity: light.sufit_salon
+                tap_action: !include FloorPlan3D/popup/swiatlo_salon405.yaml
+                icon: phu:sultan-group
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: white;
+                            --label-badge-red: white;
+                          }
+          ##### ŚWIATLA JADALNIA
+          - type: custom:badge-card
+            style:
+              top: 69%
+              left: 40.5%
+              transform: scale(0.80,0.80)
+            badges:
+              - entity: light.sufit_jadalnia
+                tap_action: !include FloorPlan3D/popup/swiatlo_jadalnia3.yaml
+                icon: phu:sultan-group
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: white;
+                            --label-badge-red: white;
+                          }
+          ##### ŚWIATLA KUCHNIA
+          - type: custom:badge-card
+            style:
+              top: 66%
+              left: 32%
+              transform: scale(0.80,0.80)
+            badges:
+              - entity: light.sufit_jadalnia
+                tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia3.yaml
+                icon: phu:sultan-group
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: white;
+                            --label-badge-red: white;
+                          }
+          ##### TV
+          - type: custom:badge-card
+            style:
+              top: 67%
+              left: 56%
+              transform: scale(0.80,0.80)
+            badges:
+              - entity: media_player.rzutnik
+                tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia3.yaml
+                double_tap_action:
+                  action: toggle
+                icon: mdi:power
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: white;
+                            --label-badge-red: white;
+                          }
+          ##### ZMIANA PIETRA
+          - type: custom:badge-card
+            style:
+              top: 57.5%
+              left: 46%
+              transform: scale(0.80,0.80)
+            badges:
               - entity: input_boolean.pietro
-                state: "off"
-            elements:
-              - entity: sensor.temp_sensor_kuchnia_temperature
-                style:
-                  left: 21%
-                  top: 72%
-                  color: transparent
-                  transform: scale(0.7,0.7)
-                type: state-badge
-          # TEMP SALON
-          - type: conditional
-            conditions:
-              - entity: input_boolean.pietro
-                state: "off"
-            elements:
-              - entity: sensor.temperature_sensor
-                style:
-                  top: 65%
-                  left: 62%
-                  color: transparent
-                  transform: scale(0.7,0.7)
-                type: state-badge
+                tap_action:
+                  action: toggle
+                icon: mdi:stairs-up
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: white;
+                            --label-badge-red: white;
+                          }
           ######################################################################################################################
           ###################################################### GORNE MENU ####################################################
           # ALAN
@@ -496,6 +551,11 @@ views:
                   return `<span style='vertical-align: 1px'></span><ha-icon icon='${i}' style='width: 16px; vertical-align:2px'></ha-icon>${b}%`
                 ]]]
             state:
+              - value: idle
+                color: gray
+                styles:
+                  icon:
+                    - margin-top: -25%
               - value: docked
                 color: gray
                 styles:
@@ -611,5 +671,5 @@ views:
                 row_type: custom:button-card
         ########################################################################################################################
         ######################################################### TLO ##########################################################
-        image: local/floor_plan/parter/parter_ipad5.png
+        image: local/floor_plan/parter/parter200.png
         type: picture-elements
