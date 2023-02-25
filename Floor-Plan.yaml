@@ -20,7 +20,7 @@ views:
           - entity: light.sufit_salon
             state_image:
               "off": local/floor_plan/transparent.png
-              "on": local/floor_plan/parter/swiatlo_salon.png
+              "on": local/floor_plan/parter/parter_swiatlo_salon.png
             style:
               left: 50%
               top: 50%
