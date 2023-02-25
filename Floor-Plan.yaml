@@ -59,8 +59,8 @@ views:
           ##### ŚWIATLA SALON
           - type: custom:badge-card
             style:
-              top: 73.5%
-              left: 51.5%
+              top: 74%
+              left: 54%
               transform: scale(0.8,0.8)
             badges:
               - entity: light.sufit_salon
@@ -92,8 +92,8 @@ views:
           ##### ŚWIATLA JADALNIA
           - type: custom:badge-card
             style:
-              top: 69%
-              left: 40.5%
+              top: 70.5%
+              left: 42.5%
               transform: scale(0.80,0.80)
             badges:
               - entity: light.sufit_jadalnia
@@ -125,8 +125,8 @@ views:
           ##### ŚWIATLA KUCHNIA
           - type: custom:badge-card
             style:
-              top: 66%
-              left: 32%
+              top: 67%
+              left: 34%
               transform: scale(0.80,0.80)
             badges:
               - entity: light.sufit_jadalnia
@@ -158,8 +158,8 @@ views:
           ##### TV
           - type: custom:badge-card
             style:
-              top: 67%
-              left: 56%
+              top: 68%
+              left: 59%
               transform: scale(0.80,0.80)
             badges:
               - entity: media_player.rzutnik
@@ -193,8 +193,8 @@ views:
           ##### ZMIANA PIETRA
           - type: custom:badge-card
             style:
-              top: 57.5%
-              left: 46%
+              top: 58%
+              left: 48%
               transform: scale(0.80,0.80)
             badges:
               - entity: input_boolean.pietro
