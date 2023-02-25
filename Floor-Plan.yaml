@@ -26,6 +26,17 @@ views:
               top: 50%
               width: 100%
             type: image
+          # DRZWI - LAZIENKA
+          # - entity: sensor.swiatlo_drzwi_lazienka
+          #   state_image:
+          #     Otwarte-Zapalone: local/floor_plan/parter/drzwi_lazienka_swiatlo.png
+          #     Zamkniete: local/floor_plan/parter/transparent.png
+          #     Otwarte-Zgaszone: local/floor_plan/parter/drzwi_lazienka.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
           # Piętro
           - entity: input_boolean.pietro
             state_image:
