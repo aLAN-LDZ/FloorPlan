@@ -1,0 +1,597 @@
+title: Dom
+background: var(--background-image)
+views:
+  - theme: ios-dark-mode-dark-blue
+    title: Parter
+    path: parter
+    type: panel
+    badges:
+      []
+      ####################################################### Dodatki ########################################################
+      #################################                                                        ###############################
+    resources:
+      - url: /local/community/custom-brand-icons/custom-brand-icons.js
+        type: js
+      ####################################################### OBRAZKI ########################################################
+      ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu ###############################
+    cards:
+      - elements:
+          # ŚWIATŁO - SUFIT SALON
+          - entity: light.sufit_salon
+            state_image:
+              "off": local/floor_plan/transparent.png
+              "on": local/floor_plan/parter/swiatlo_salon.png
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+            type: image
+          # Piętro
+          - entity: input_boolean.pietro
+            state_image:
+              "off": local/floor_plan/transparent.png
+              "on": local/floor_plan/pietro/pietro.png
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+            type: image
+          ######################################################################################################################
+          ###################################################### IKONY #########################################################
+          # TV
+          # - type: conditional
+          #   conditions:
+          #     - entity: input_boolean.pietro
+          #       state: "off"
+          #   elements:
+          #     - entity: media_player.rzutnik
+          #       icon: "phu:apple-tv-box"
+          #       style:
+          #         "--mdc-icon-size": 20px
+          #         "--paper-item-icon-color": white
+          #         left: 56%
+          #         top: 62%
+          #       tap_action:
+          #         action: toggle
+          #       type: state-icon
+          ######################################################################################################################
+          ###################################################### PLAKIETKI #####################################################
+          ##### ŚWIATLA SALON
+          - type: custom:badge-card
+            style:
+              top: 73.5%
+              left: 51.5%
+              transform: scale(0.8,0.8)
+            badges:
+              - entity: light.sufit_salon
+                tap_action: !include FloorPlan3D/popup/swiatlo_salon.yaml
+                icon: phu:sultan-group
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: {% if is_state('light.sufit_salon', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-red: {% if is_state('light.sufit_salon', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
+                          }
+          ##### ŚWIATLA JADALNIA
+          - type: custom:badge-card
+            style:
+              top: 69%
+              left: 40.5%
+              transform: scale(0.80,0.80)
+            badges:
+              - entity: light.sufit_jadalnia
+                tap_action: !include FloorPlan3D/popup/swiatlo_jadalnia.yaml
+                icon: phu:sultan-group
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: {% if is_state('light.pasek_led', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-red: {% if is_state('light.pasek_led', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
+                          }
+          ##### ŚWIATLA KUCHNIA
+          - type: custom:badge-card
+            style:
+              top: 66%
+              left: 32%
+              transform: scale(0.80,0.80)
+            badges:
+              - entity: light.sufit_jadalnia
+                tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia.yaml
+                icon: phu:sultan-group
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: {% if is_state('light.pasek_led', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-red: {% if is_state('light.pasek_led', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
+                          }
+          ##### TV
+          - type: custom:badge-card
+            style:
+              top: 67%
+              left: 56%
+              transform: scale(0.80,0.80)
+            badges:
+              - entity: media_player.rzutnik
+                tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia.yaml
+                double_tap_action:
+                  action: toggle
+                icon: mdi:power
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: white;
+                            --label-badge-red: white;
+                            display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
+                          }
+          ##### ZMIANA PIETRA
+          - type: custom:badge-card
+            style:
+              top: 57.5%
+              left: 46%
+              transform: scale(0.80,0.80)
+            badges:
+              - entity: input_boolean.pietro
+                tap_action:
+                  action: toggle
+                icon: mdi:stairs-up
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: white;
+                            --label-badge-red: white;
+                            --card-mod-icon: {% if is_state('input_boolean.pietro', 'on') %} mdi:stairs-down {% else %} mdi:stairs-up {% endif %};
+                          }
+          ######################################################################################################################
+          ###################################################### GORNE MENU ####################################################
+          # ALAN
+          - entity: person.alan
+            style:
+              top: 10.8%
+              left: 7.7%
+            custom_fields:
+              battery: |
+                [[[
+                  var i = states['sensor.iphone_battery_level'].attributes.icon;
+                  var b = states['sensor.iphone_battery_level'].state;
+                  return `<span style='vertical-align: 1px'>📱</span><ha-icon icon='${i}' style='width: 16px; vertical-align:2px'></ha-icon>${b}%`
+                ]]]
+            show_entity_picture: true
+            entity_picture: /local/floor_plan/alan.gif
+            show_name: true
+            show_last_changed: true
+            triggers_update: all
+            state:
+              - value: home
+                name: 🏡 W Domu
+                styles:
+                  name:
+                    - color: "#7DDA9F"
+                    - align-self: right
+                    - position: absolute
+                    - right: 23%
+                    - top: 70%
+                entity_picture: /local/floor_plan/alan.gif
+              - value: not_home
+                name: 🏃‍♂️ Poza Domem
+                styles:
+                  name:
+                    - color: "#93ADCB"
+                    - align-self: right
+                    - position: absolute
+                    - right: 11%
+                    - top: 70%
+                entity_picture: /local/floor_plan/alan_pozadomem.gif
+              - value: unknown
+                name: Brak Danych
+                styles:
+                  name:
+                    - color: gray
+                entity_picture: /local/floor_plan/alan.gif
+            styles:
+              card:
+                - height: 165px
+                - width: 150px
+              name:
+                - font-size: 16px
+              label:
+                - font-size: 10px
+                - color: transparent
+              custom_fields:
+                battery:
+                  - align-self: right
+                  - position: absolute
+                  - right: 32%
+                  - top: 85%
+                  - font-size: 14px
+                  - color: >-
+                      [[[ if (states["sensor.iphone_battery_level"].state < 30)
+                      return "#e45649"; if
+                      (states["sensor.iphone_battery_level"].state < 50) return
+                      "#ffa229"; if (states["sensor.iphone_battery_level"].state
+                      < 101) return "#50A14F"; else return "#ffc640"]]]
+              icon:
+                - width: 110%
+                - top: "-3%"
+            type: custom:hui-element
+            row_type: custom:button-card
+          # OLA
+          - entity: person.ola
+            style:
+              top: 10.8%
+              left: 19.4%
+            custom_fields:
+              battery: |
+                [[[
+                  var i = states['sensor.iphone_aleksandra_battery_level'].attributes.icon;
+                  var b = states['sensor.iphone_aleksandra_battery_level'].state;
+                  return `<span style='vertical-align: 1px'>📱</span><ha-icon icon='${i}' style='width: 16px; vertical-align:2px'></ha-icon>${b}%`
+                ]]]
+            show_entity_picture: true
+            show_name: true
+            show_last_changed: true
+            triggers_update: all
+            state:
+              - value: home
+                name: 🏡 W Domu
+                styles:
+                  name:
+                    - color: "#7DDA9F"
+                    - align-self: right
+                    - position: absolute
+                    - right: 23%
+                    - top: 70%
+                entity_picture: /local/floor_plan/ola.gif
+              - value: not_home
+                name: 🏃‍♂️ Poza Domem
+                styles:
+                  name:
+                    - color: "#93ADCB"
+                    - align-self: right
+                    - position: absolute
+                    - right: 11%
+                    - top: 70%
+                entity_picture: /local/floor_plan/ola_pozadomem.gif
+              - value: unknown
+                name: Brak Danych
+                styles:
+                  name:
+                    - color: gray
+                entity_picture: /local/floor_plan/ola.gif
+            styles:
+              card:
+                - height: 165px
+                - width: 150px
+              name:
+                - font-size: 16px
+              label:
+                - font-size: 10px
+                - color: transparent
+              custom_fields:
+                battery:
+                  - align-self: right
+                  - position: absolute
+                  - right: 32%
+                  - top: 85%
+                  - font-size: 14px
+                  - color: >-
+                      [[[ if
+                      (states["sensor.iphone_aleksandra_battery_level"].state <
+                      30) return "#e45649"; if
+                      (states["sensor.iphone_aleksandra_battery_level"].state <
+                      50) return "#ffa229"; if
+                      (states["sensor.iphone_aleksandra_battery_level"].state <
+                      101) return "#50A14F"; else return "#ffc640"]]]
+              icon:
+                - width: 130%
+                - top: "-13%"
+            type: custom:hui-element
+            row_type: custom:button-card
+          # GODZINA I POGODA
+          - entity: weather.forecast_dom
+            style:
+              top: 1.25%
+              left: 34.5% #40%
+              width: 20%
+              transform: scale(0.90,0.90)
+            type: custom:hui-element
+            row_type: custom:clock-weather-card
+            sun_entity: sun.sun
+            forecast_days: 5
+            weather_icon_type: fill
+            hide_today_section: false
+            hide_forecast_section: false
+            hide_clock: false
+            hide_date: false
+          # ZAMEK
+          - entity: lock.lock_66a3
+            style:
+              top: 8.4%
+              left: 59.8%
+              width: 10.9%
+            name: Zamek
+            type: custom:hui-element
+            row_type: custom:mushroom-lock-card
+          # ALARM
+          - entity: alarm_control_panel.alarmo
+            style:
+              top: 20.5%
+              left: 59.8%
+              width: 10.9%
+            states:
+              - armed_away
+            tap_action: !include FloorPlan3D/popup/alarm.yaml
+            type: custom:hui-element
+            row_type: custom:mushroom-alarm-control-panel-card
+          # REZERWACJA
+          # - entity: alarm_control_panel.alarmo
+          #   style:
+          #     top: 22.8%
+          #     left: 7.5%
+          #     width: 10.9%
+          #   type: custom:hui-element
+          #   row_type: custom:mushroom-alarm-control-panel-card
+          # MENU PARTER
+          - type: conditional
+            conditions:
+              - entity: input_boolean.pietro
+                state: "off"
+            elements:
+              - entity: input_boolean.menu_parter
+                style:
+                  top: 10.8%
+                  left: 92.3%
+                show_entity_picture: true
+                show_name: true
+                styles:
+                  card:
+                    - height: 165px
+                    - width: 150px
+                  name:
+                    - font-size: 16px
+                  label:
+                    - font-size: 10px
+                    - color: transparent
+                  icon:
+                    - width: 110%
+                type: custom:hui-element
+                row_type: custom:button-card
+          # MENU PPIETRO
+          - type: conditional
+            conditions:
+              - entity: input_boolean.pietro
+                state: "on"
+            elements:
+              - entity: input_boolean.menu_pietro
+                style:
+                  top: 10.8%
+                  left: 92.3%
+                show_entity_picture: true
+                show_name: true
+                styles:
+                  card:
+                    - height: 165px
+                    - width: 150px
+                  name:
+                    - font-size: 16px
+                  label:
+                    - font-size: 10px
+                    - color: transparent
+                  icon:
+                    - width: 110%
+                type: custom:hui-element
+                row_type: custom:button-card
+          # Maniek
+          - entity: vacuum.maniek
+            custom_fields:
+              battery: |
+                [[[
+                  var i = states['sensor.maniek_battery_level'].attributes.icon;
+                  var b = states['sensor.maniek_battery_level'].state;
+                  return `<span style='vertical-align: 1px'></span><ha-icon icon='${i}' style='width: 16px; vertical-align:2px'></ha-icon>${b}%`
+                ]]]
+            state:
+              - value: idle
+                color: gray
+                styles:
+                  icon:
+                    - margin-top: -25%
+              - value: docked
+                color: gray
+                styles:
+                  icon:
+                    - margin-top: -25%
+              - value: paused
+                color: gray
+                styles:
+                  icon:
+                    - margin-top: -25%
+                    - animation:
+                        - blink 1s linear infinite
+              - value: returning
+                color: white
+                styles:
+                  icon:
+                    - margin-top: -25%
+                    - animation:
+                        - returning 2s linear infinite
+              - value: cleaning
+                color: white
+                styles:
+                  icon:
+                    - margin-top: -15%
+                    - animation:
+                        - cleaning 2s linear infinite
+            extra_styles: |
+              @keyframes cleaning {
+                0% {transform: rotatez(0deg); top: 5px}
+                25% {transform: rotatez(-25deg); top: -5px}
+                75% {transform: rotatez(25deg); top: -5px}
+                100% {transform: rotatez(0deg); top: 5px}
+              }
+              @keyframes returning {
+                0% {top: -150px; opacity: 0}
+                15% {top: -100px; opacity: 0.5}
+                25% {top: -35px; opacity: 1}
+                75% {top: 15px; opacity: 1}
+                85% {top: 20px; opacity: 0.5}
+                100% {top: 20px; opacity: 0}
+              }
+            style:
+              top: 10.8%
+              left: 80.7%
+            show_entity_picture: true
+            show_name: true
+            # lock:
+            #   enabled: true
+            styles:
+              card:
+                - height: 165px
+                - width: 150px
+              name:
+                - font-size: 16px
+                - align-self: right
+                - position: absolute
+                - right: 32%
+                - top: 70%
+              label:
+                - font-size: 10px
+                - color: transparent
+              icon:
+                - width: 78%
+              custom_fields:
+                battery:
+                  - align-self: right
+                  - position: absolute
+                  - right: 36%
+                  - top: 85%
+                  - font-size: 14px
+                  - color: >-
+                      [[[ if
+                      (states["sensor.maniek_battery_level"].state <
+                      30) return "#e45649"; if
+                      (states["sensor.maniek_battery_level"].state <
+                      50) return "#ffa229"; if
+                      (states["sensor.maniek_battery_level"].state <
+                      101) return "#50A14F"; else return "#ffc640"]]]
+            tap_action: !include FloorPlan3D/popup/maniek.yaml
+            type: custom:hui-element
+            row_type: custom:button-card
+          ######################################################################################################################
+          ###################################################### DOLNE MENU ####################################################
+          # DRUKARKA
+          # - type: conditional
+          #   conditions:
+          #     - entity: input_boolean.menu_parter
+          #       state: "on"
+          #   elements:
+          #     - entity: switch.drukarka3d_mss210rtl_main_channel
+          #       style:
+          #         top: 39%
+          #         left: 26.3%
+          #       show_entity_picture: true
+          #       show_name: true
+          #       styles:
+          #         card:
+          #           - height: 165px
+          #           - width: 150px
+          #         name:
+          #           - font-size: 16px
+          #         label:
+          #           - font-size: 10px
+          #           - color: transparent
+          #         icon:
+          #           - width: 80%
+          #       entity_picture: /local/floor_plan/drukarka.png
+          #       state:
+          #         - value: "off"
+          #           styles: null
+          #           entity_picture: /local/floor_plan/drukarka_off.png
+          #       type: custom:hui-element
+          #       row_type: custom:button-card
+        ########################################################################################################################
+        ######################################################### TLO ##########################################################
+        image: local/floor_plan/parter/parter.png
+        type: picture-elements

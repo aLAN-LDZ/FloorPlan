@@ -1,0 +1,11 @@
+#Yaml
+lovelace:
+  mode: storage
+  dashboards:
+    floorplan-youtube:
+      mode: yaml
+      filename: Floor-Plan-Youtube.yaml
+      title: Youtube
+      icon: mdi:floor-plan
+      show_in_sidebar: true
+      require_admin: false

@@ -1,0 +1,120 @@
+title: Dom
+background: var(--background-image)
+views:
+  - theme: ios-dark-mode-dark-blue
+    title: Parter
+    path: parter
+    type: panel
+    badges:
+      []
+      ####################################################### Dodatki ########################################################
+      #################################                                                        ###############################
+    resources:
+      - url: /local/community/custom-brand-icons/custom-brand-icons.js
+        type: js
+        ####################################################### OBRAZKI #######################################################
+        ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu ##############################
+    cards:
+      - elements:
+          # ŚWIATŁO - SUFIT SALON
+          - entity: light.sufit_salon
+            state_image:
+              "off": local/floor_plan_youtube/transparent.png
+              "on": local/floor_plan_youtube/parter/parter_swiatlo_salon.png
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+            type: image
+          # Piętro
+          - entity: input_boolean.pietro
+            state_image:
+              "off": local/floor_plan_youtube/transparent.png
+              "on": local/floor_plan_youtube/pietro/pietro.png
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+            type: image
+          ######################################################################################################################
+          ###################################################### IKONY #########################################################
+
+          ######################################################################################################################
+          ###################################################### PLAKIETKI #####################################################
+          ##### ZMIANA PIETRA
+          - type: custom:badge-card
+            style:
+              top: 57.5%
+              left: 46%
+              transform: scale(0.80,0.80)
+            badges:
+              - entity: input_boolean.pietro
+                tap_action:
+                  action: toggle
+                icon: mdi:stairs-up
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: white;
+                            --label-badge-red: white;
+                            --card-mod-icon: {% if is_state('input_boolean.pietro', 'on') %} mdi:stairs-down {% else %} mdi:stairs-up {% endif %};
+                          }
+          ##### ŚWIATLA SALON
+          - type: custom:badge-card
+            style:
+              top: 73.5%
+              left: 51.5%
+              transform: scale(0.8,0.8)
+            badges:
+              - entity: light.sufit_salon
+                tap_action: !include FloorPlan3D/popup/swiatlo_salon405.yaml
+                icon: phu:sultan-group
+                name: Swiatla-Salon
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: {% if is_state('light.sufit_salon', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-red: {% if is_state('light.sufit_salon', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
+                          }
+        ######################################################################################################################
+        ###################################################### GORNE MENU ####################################################
+
+        ######################################################################################################################
+        ###################################################### DOLNE MENU ####################################################
+
+        ######################################################################################################################
+        ######################################################### TLO ########################################################
+        image: local/floor_plan_youtube/parter/parter.png
+        type: picture-elements
