@@ -7,25 +7,188 @@ views:
     type: panel
     badges:
       []
-      ####################################################### Dodatki ########################################################
-      #################################                                                        ###############################
+      ####################################################### Dodatki ##################################################
+      #################################                                                        #########################
     resources:
       - url: /local/community/custom-brand-icons/custom-brand-icons.js
         type: js
-      ####################################################### OBRAZKI ########################################################
-      ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu ###############################
+      ####################################################### OBRAZKI PARTER ###########################################
+      ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu #########################
     cards:
       - elements:
-          # ŚWIATŁO - SUFIT SALON
-          - entity: light.sufit_salon
-            state_image:
-              "off": local/floor_plan/transparent.png
-              "on": local/floor_plan/parter/parter_swiatlo_salon.png
-            style:
-              left: 50%
-              top: 50%
-              width: 100%
-            type: image
+          ##############################################################################################################
+          # CZY SWIATLA W SALONIE JADALNI I KUCHNIA SA ZAPALONE?
+          - type: conditional
+            conditions:
+              - entity: sensor.swiatla_salon_jadalnia_kuchnia
+                state: "Tak"
+            elements:
+              - entity: sensor.swiatla_salon_jadalnia_kuchnia
+                state_image:
+                  "Tak": local/floor_plan/parter/parter_swiatla_salon_jadalnia_kuchnia2.png
+                style:
+                  left: 50%
+                  top: 50%
+                  width: 100%
+                type: image
+          # JESLI NIE WSZYSTKIE POWYZSZE SWIATLA SA ZAPALONE
+          - type: conditional
+            conditions:
+              - entity: sensor.swiatla_salon_jadalnia_kuchnia
+                state: "Nie"
+            elements:
+              # ŚWIATŁA - JADALNIA
+              - entity: light.sufit_jadalnia
+                state_image:
+                  "off": local/floor_plan/transparent.png
+                  "on": local/floor_plan/parter/parter_swiatlo_jadalnia3.png
+                style:
+                  left: 50%
+                  top: 50%
+                  width: 100%
+                type: image
+              ##########################################################################################################
+              # CZY SWIATLA W JADALNI I SALONIE SA ZAPALONE?
+              - type: conditional
+                conditions:
+                  - entity: sensor.swiatla_salon_jadalnia
+                    state: "Tak"
+                elements:
+                  - entity: sensor.swiatla_salon_jadalnia
+                    state_image:
+                      "Tak": local/floor_plan/parter/parter_swiatla_salon_jadalnia.png
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                    type: image
+              # JESLI NIE WSZYSTKIE POWYZSZE SWIATLA SA ZAPALONE
+              - type: conditional
+                conditions:
+                  - entity: sensor.swiatla_salon_jadalnia
+                    state: "Nie"
+                elements:
+                  # ŚWIATŁA - SALON
+                  - entity: light.swiatla_salon
+                    state_image:
+                      "off": local/floor_plan/transparent.png
+                      "on": local/floor_plan/parter/parter_swiatlo_salon.png
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                    type: image
+              ##########################################################################################################
+              # CZY SWIATLA W JADALNI I KUCHNI SA ZAPALONE?
+              - type: conditional
+                conditions:
+                  - entity: sensor.swiatla_kuchnia_jadalnia
+                    state: "Tak"
+                elements:
+                  - entity: sensor.swiatla_kuchnia_jadalnia
+                    state_image:
+                      "Tak": local/floor_plan/parter/parter_swiatla_kuchnia_jadalnia.png
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                    type: image
+              # JESLI NIE WSZYSTKIE POWYZSZE SWIATLA SA ZAPALONE
+              - type: conditional
+                conditions:
+                  - entity: sensor.swiatla_kuchnia_jadalnia
+                    state: "Nie"
+                elements:
+                  # ŚWIATŁA - KUCHNIA
+                  - entity: light.swiatla_kuchnia
+                    state_image:
+                      "off": local/floor_plan/transparent.png
+                      "on": local/floor_plan/parter/parter_swiatlo_kuchnia2.png
+                    style:
+                      left: 50%
+                      top: 50%
+                      width: 100%
+                    type: image
+          # # ŚWIATŁA - BRUDNA KUCHNIA
+          # - entity: light.pasek_led
+          #   state_image:
+          #     "off": local/floor_plan/transparent.png
+          #     "on": local/floor_plan/parter/parter_swiatlo_brudna.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
+          # # ŚWIATŁA - Lazienka
+          # - entity: light.pasek_led
+          #   state_image:
+          #     "off": local/floor_plan/transparent.png
+          #     "on": local/floor_plan/parter/parter_swiatlo_lazienka.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
+          # # ŚWIATŁA - BIURO
+          # - entity: light.pasek_led
+          #   state_image:
+          #     "off": local/floor_plan/transparent.png
+          #     "on": local/floor_plan/parter/parter_swiatlo_biuro.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
+          # # ŚWIATŁA - KORYTARZ
+          # - entity: light.pasek_led
+          #   state_image:
+          #     "off": local/floor_plan/transparent.png
+          #     "on": local/floor_plan/parter/parter_swiatlo_korytarz2.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
+          # # ŚWIATŁA - GARAZ
+          # - entity: light.pasek_led
+          #   state_image:
+          #     "off": local/floor_plan/transparent.png
+          #     "on": local/floor_plan/parter/parter_swiatlo_garaz.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
+          # # ŚWIATŁA - WIATROLAP
+          # - entity: light.pasek_led
+          #   state_image:
+          #     "off": local/floor_plan/transparent.png
+          #     "on": local/floor_plan/parter/parter_swiatlo_wiatrolap.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
+          # # ŚWIATŁA - GARDEROBA
+          # - entity: light.pasek_led
+          #   state_image:
+          #     "off": local/floor_plan/transparent.png
+          #     "on": local/floor_plan/parter/parter_swiatlo_garderoba.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
+          # # ŚWIATŁA - KOTLOWNIA
+          # - entity: light.pasek_led
+          #   state_image:
+          #     "off": local/floor_plan/transparent.png
+          #     "on": local/floor_plan/parter/parter_swiatlo_kotlownia.png
+          #   style:
+          #     left: 50%
+          #     top: 50%
+          #     width: 100%
+          #   type: image
           # DRZWI - LAZIENKA
           # - entity: sensor.swiatlo_drzwi_lazienka
           #   state_image:
@@ -37,6 +200,8 @@ views:
           #     top: 50%
           #     width: 100%
           #   type: image
+          ####################################################### OBRAZKI PIETRO #######################################
+          ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu #####################
           # Piętro
           - entity: input_boolean.pietro
             state_image:
@@ -47,8 +212,24 @@ views:
               top: 50%
               width: 100%
             type: image
-          ######################################################################################################################
-          ###################################################### IKONY #########################################################
+          # ŚWIATŁA - JESLI PIĘTRO ON
+          - type: conditional
+            conditions:
+              - entity: input_boolean.pietro
+                state: "on"
+            elements:
+              # ŚWIATŁA - KORYTARZ DOL
+              - entity: light.pasek_led
+                state_image:
+                  "off": local/floor_plan/transparent.png
+                  "on": local/floor_plan/pietro/pietro_swiatlo_korytarz_dol.png
+                style:
+                  left: 50%
+                  top: 50%
+                  width: 100%
+                type: image
+          ##############################################################################################################
+          ###################################################### IKONY #################################################
           # TV
           # - type: conditional
           #   conditions:
@@ -65,8 +246,8 @@ views:
           #       tap_action:
           #         action: toggle
           #       type: state-icon
-          ######################################################################################################################
-          ###################################################### PLAKIETKI #####################################################
+          ##############################################################################################################
+          ###################################################### PLAKIETKI #############################################
           ##### ŚWIATLA SALON
           - type: custom:badge-card
             style:
@@ -96,8 +277,8 @@ views:
                         .: |
                           ha-label-badge {
                             --label-badge-background-color: gray;
-                            --label-badge-text-color: {% if is_state('light.sufit_salon', 'on') %} #cd9b1d {% else %} white {% endif %};
-                            --label-badge-red: {% if is_state('light.sufit_salon', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-text-color: {% if is_state('light.swiatla_salon', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-red: {% if is_state('light.swiatla_salon', 'on') %} #cd9b1d {% else %} white {% endif %};
                             display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
                           }
           ##### ŚWIATLA JADALNIA
@@ -129,8 +310,8 @@ views:
                         .: |
                           ha-label-badge {
                             --label-badge-background-color: gray;
-                            --label-badge-text-color: {% if is_state('light.pasek_led', 'on') %} #cd9b1d {% else %} white {% endif %};
-                            --label-badge-red: {% if is_state('light.pasek_led', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-text-color: {% if is_state('light.swiatla_jadalnia', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-red: {% if is_state('light.swiatla_jadalnia', 'on') %} #cd9b1d {% else %} white {% endif %};
                             display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
                           }
           ##### ŚWIATLA KUCHNIA
@@ -162,8 +343,8 @@ views:
                         .: |
                           ha-label-badge {
                             --label-badge-background-color: gray;
-                            --label-badge-text-color: {% if is_state('light.pasek_led', 'on') %} #cd9b1d {% else %} white {% endif %};
-                            --label-badge-red: {% if is_state('light.pasek_led', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-text-color: {% if is_state('light.swiatla_kuchnia', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-red: {% if is_state('light.swiatla_kuchnia', 'on') %} #cd9b1d {% else %} white {% endif %};
                             display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
                           }
           ##### TV
@@ -235,8 +416,8 @@ views:
                             --label-badge-red: white;
                             --card-mod-icon: {% if is_state('input_boolean.pietro', 'on') %} mdi:stairs-down {% else %} mdi:stairs-up {% endif %};
                           }
-          ######################################################################################################################
-          ###################################################### GORNE MENU ####################################################
+          ##############################################################################################################
+          ###################################################### GORNE MENU ############################################
           # ALAN
           - entity: person.alan
             style:
@@ -570,8 +751,8 @@ views:
             tap_action: !include FloorPlan3D/popup/maniek.yaml
             type: custom:hui-element
             row_type: custom:button-card
-          ######################################################################################################################
-          ###################################################### DOLNE MENU ####################################################
+          ##############################################################################################################
+          ###################################################### DOLNE MENU ############################################
           # DRUKARKA
           # - type: conditional
           #   conditions:
@@ -602,7 +783,7 @@ views:
           #           entity_picture: /local/floor_plan/drukarka_off.png
           #       type: custom:hui-element
           #       row_type: custom:button-card
-        ########################################################################################################################
-        ######################################################### TLO ##########################################################
+        ################################################################################################################
+        ######################################################### TLO ##################################################
         image: local/floor_plan/parter/parter.png
         type: picture-elements
