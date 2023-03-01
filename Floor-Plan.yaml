@@ -16,99 +16,6 @@ views:
       ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu #########################
     cards:
       - elements:
-          ##############################################################################################################
-          # CZY SWIATLA W SALONIE JADALNI I KUCHNIA SA ZAPALONE?
-          - type: conditional
-            conditions:
-              - entity: sensor.swiatla_salon_jadalnia_kuchnia
-                state: "Tak"
-            elements:
-              - entity: sensor.swiatla_salon_jadalnia_kuchnia
-                state_image:
-                  "Tak": local/floor_plan/parter/parter_swiatla_salon_jadalnia_kuchnia2.png
-                style:
-                  left: 50%
-                  top: 50%
-                  width: 100%
-                type: image
-          # JESLI NIE WSZYSTKIE POWYZSZE SWIATLA SA ZAPALONE
-          - type: conditional
-            conditions:
-              - entity: sensor.swiatla_salon_jadalnia_kuchnia
-                state: "Nie"
-            elements:
-              # ŚWIATŁA - JADALNIA
-              - entity: light.sufit_jadalnia
-                state_image:
-                  "off": local/floor_plan/transparent.png
-                  "on": local/floor_plan/parter/parter_swiatlo_jadalnia3.png
-                style:
-                  left: 50%
-                  top: 50%
-                  width: 100%
-                type: image
-              ##########################################################################################################
-              # CZY SWIATLA W JADALNI I SALONIE SA ZAPALONE?
-              - type: conditional
-                conditions:
-                  - entity: sensor.swiatla_salon_jadalnia
-                    state: "Tak"
-                elements:
-                  - entity: sensor.swiatla_salon_jadalnia
-                    state_image:
-                      "Tak": local/floor_plan/parter/parter_swiatla_salon_jadalnia.png
-                    style:
-                      left: 50%
-                      top: 50%
-                      width: 100%
-                    type: image
-              # JESLI NIE WSZYSTKIE POWYZSZE SWIATLA SA ZAPALONE
-              - type: conditional
-                conditions:
-                  - entity: sensor.swiatla_salon_jadalnia
-                    state: "Nie"
-                elements:
-                  # ŚWIATŁA - SALON
-                  - entity: light.swiatla_salon
-                    state_image:
-                      "off": local/floor_plan/transparent.png
-                      "on": local/floor_plan/parter/parter_swiatlo_salon.png
-                    style:
-                      left: 50%
-                      top: 50%
-                      width: 100%
-                    type: image
-              ##########################################################################################################
-              # CZY SWIATLA W JADALNI I KUCHNI SA ZAPALONE?
-              - type: conditional
-                conditions:
-                  - entity: sensor.swiatla_kuchnia_jadalnia
-                    state: "Tak"
-                elements:
-                  - entity: sensor.swiatla_kuchnia_jadalnia
-                    state_image:
-                      "Tak": local/floor_plan/parter/parter_swiatla_kuchnia_jadalnia.png
-                    style:
-                      left: 50%
-                      top: 50%
-                      width: 100%
-                    type: image
-              # JESLI NIE WSZYSTKIE POWYZSZE SWIATLA SA ZAPALONE
-              - type: conditional
-                conditions:
-                  - entity: sensor.swiatla_kuchnia_jadalnia
-                    state: "Nie"
-                elements:
-                  # ŚWIATŁA - KUCHNIA
-                  - entity: light.swiatla_kuchnia
-                    state_image:
-                      "off": local/floor_plan/transparent.png
-                      "on": local/floor_plan/parter/parter_swiatlo_kuchnia2.png
-                    style:
-                      left: 50%
-                      top: 50%
-                      width: 100%
-                    type: image
           # # ŚWIATŁA - BRUDNA KUCHNIA
           # - entity: light.pasek_led
           #   state_image:
@@ -200,34 +107,88 @@ views:
           #     top: 50%
           #     width: 100%
           #   type: image
+
+          #SWIATLO - OPENSPACE PARTER
+          - entity: sensor.swiatlo_openspace_parter
+            state_image:
+              Zapalone-Wszystkie: local/floor_plan/parter/Swiatlo_Openspace/wszystkie.png
+              Zapalone-Salon-Jadalnia-Kuchnia: local/floor_plan/parter/Swiatlo_Openspace/salon_jadalnia_kuchnia.png
+              Zapalone-Salon-Jadalnia-Korytarz: local/floor_plan/parter/Swiatlo_Openspace/salon_jadalnia_korytarz.png
+              Zapalone-Salon-Kuchnia-Korytarz: local/floor_plan/parter/Swiatlo_Openspace/salon_kuchnia_korytarz.png
+              Zapalone-Jadalnia-Kuchnia-Korytarz: local/floor_plan/parter/Swiatlo_Openspace/jadalnia_kuchnia_korytarz.png
+              Zapalone-Salon-Jadalnia: local/floor_plan/parter/Swiatlo_Openspace/salon_jadalnia.png
+              Zapalone-Salon-Kuchnia: local/floor_plan/parter/Swiatlo_Openspace/salon_kuchnia.png
+              Zapalone-Salon-Korytarz: local/floor_plan/parter/Swiatlo_Openspace/salon_korytarz.png
+              Zapalone-Jadalnia-Kuchnia: local/floor_plan/parter/Swiatlo_Openspace/jadalnia_kuchnia.png
+              Zapalone-Jadalnia-Korytarz: local/floor_plan/parter/Swiatlo_Openspace/jadalnia_korytarz.png
+              Zapalone-Kuchnia-Korytarz: local/floor_plan/parter/Swiatlo_Openspace/kuchnia_korytarz.png
+              Zapalone-Salon: local/floor_plan/parter/Swiatlo_Openspace/salon.png
+              Zapalone-Jadalnia: local/floor_plan/parter/Swiatlo_Openspace/jadalnia.png
+              Zapalone-Kuchnia: local/floor_plan/parter/Swiatlo_Openspace/kuchnia.png
+              Zapalone-Korytarz: local/floor_plan/parter/Swiatlo_Openspace/korytarz.png
+              Zgaszone: local/floor_plan/transparent.png
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+            type: image
+          # TV
+          - entity: input_select.xiaomi_source_list
+            state_image:
+              AppleTV: local/floor_plan/parter/tv_appletv.png
+              Desktop: local/floor_plan/transparent.png
+              PS5: local/floor_plan/parter/tv_ps5.png
+              TOYA: local/floor_plan/parter/tv_toya.png
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+            type: image
+          #OKNO - SALON
+          - entity: sensor.swiatlo_hs_jadalnia
+            state_image:
+              Otwarte-Zapalone-Wszystkie: local/floor_plan/parter/HS_Jadalnia/swiatlo_wszystkie.png
+              Otwarte-Zapalone-Jadalnia-Kuchnia: local/floor_plan/parter/HS_Jadalnia/swiatlo_kuchnia_jadalnia.png
+              Otwarte-Zapalone-Jadalnia-Salon: local/floor_plan/parter/HS_Jadalnia/swiatlo_salon_jadalnia.png
+              Otwarte-Zapalone-Kuchnia-Salon: local/floor_plan/parter/HS_Jadalnia/swiatlo_kuchnia_salon.png
+              Otwarte-Zapalone-Jadalnia: local/floor_plan/parter/HS_Jadalnia/swiatlo_jadalnia.png
+              Otwarte-Zapalone-Kuchnia: local/floor_plan/parter/HS_Jadalnia/swiatlo_kuchnia.png
+              Otwarte-Zapalone-Salon: local/floor_plan/parter/HS_Jadalnia/swiatlo_salon.png
+              Otwarte-Zgaszone: local/floor_plan/parter/HS_Jadalnia/swiatlo_zgaszone.png
+              Zamkniete: local/floor_plan/transparent.png
+            style:
+              left: 50%
+              top: 50%
+              width: 100%
+            type: image
           ####################################################### OBRAZKI PIETRO #######################################
           ################################# Im obrazek niżej tym warstwa jest bardziej na wierzchu #####################
           # Piętro
           - entity: input_boolean.pietro
             state_image:
               "off": local/floor_plan/transparent.png
-              "on": local/floor_plan/pietro/pietro.png
+              "on": local/floor_plan/pietro/pietro2.png
             style:
               left: 50%
               top: 50%
               width: 100%
             type: image
-          # ŚWIATŁA - JESLI PIĘTRO ON
-          - type: conditional
-            conditions:
-              - entity: input_boolean.pietro
-                state: "on"
-            elements:
-              # ŚWIATŁA - KORYTARZ DOL
-              - entity: light.pasek_led
-                state_image:
-                  "off": local/floor_plan/transparent.png
-                  "on": local/floor_plan/pietro/pietro_swiatlo_korytarz_dol.png
-                style:
-                  left: 50%
-                  top: 50%
-                  width: 100%
-                type: image
+          # # ŚWIATŁA - JESLI PIĘTRO ON
+          # - type: conditional
+          #   conditions:
+          #     - entity: input_boolean.pietro
+          #       state: "on"
+          #   elements:
+          #     # ŚWIATŁA - KORYTARZ DOL
+          #     - entity: light.pasek_led
+          #       state_image:
+          #         "off": local/floor_plan/transparent.png
+          #         "on": local/floor_plan/pietro/pietro_swiatlo_korytarz_dol.png
+          #       style:
+          #         left: 50%
+          #         top: 50%
+          #         width: 100%
+          #       type: image
           ##############################################################################################################
           ###################################################### IKONY #################################################
           # TV
@@ -248,6 +209,39 @@ views:
           #       type: state-icon
           ##############################################################################################################
           ###################################################### PLAKIETKI #############################################
+          ##### ŚWIATLA KORYTARZ
+          - type: custom:badge-card
+            style:
+              top: 65%
+              left: 45%
+              transform: scale(0.8,0.8)
+            badges:
+              - entity: light.swiatla_korytarz
+                tap_action: !include FloorPlan3D/popup/swiatlo_korytarz.yaml
+                icon: phu:sultan-group
+                name: Swiatla-Korytarz
+                card_mod:
+                  style:
+                    ha-state-label-badge:
+                      $:
+                        ha-label-badge:
+                          $: |
+                            .badge-container .label-badge .label span {
+                              border-style: solid;
+                              border-color: transparent;
+                              color: transparent;
+                              background-color: transparent;
+                            }
+                            .badge-container .title {
+                              color: transparent;
+                            }
+                        .: |
+                          ha-label-badge {
+                            --label-badge-background-color: gray;
+                            --label-badge-text-color: {% if is_state('light.swiatla_korytarz', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            --label-badge-red: {% if is_state('light.swiatla_korytarz', 'on') %} #cd9b1d {% else %} white {% endif %};
+                            display: {% if is_state('input_boolean.pietro', 'off') %} inline-block {% else %} none {% endif %};
+                          }
           ##### ŚWIATLA SALON
           - type: custom:badge-card
             style:
@@ -255,7 +249,7 @@ views:
               left: 54%
               transform: scale(0.8,0.8)
             badges:
-              - entity: light.sufit_salon
+              - entity: light.swiatla_salon
                 tap_action: !include FloorPlan3D/popup/swiatlo_salon.yaml
                 icon: phu:sultan-group
                 name: Swiatla-Salon
@@ -288,7 +282,7 @@ views:
               left: 42.5%
               transform: scale(0.80,0.80)
             badges:
-              - entity: light.sufit_jadalnia
+              - entity: light.swiatla_jadalnia
                 tap_action: !include FloorPlan3D/popup/swiatlo_jadalnia.yaml
                 icon: phu:sultan-group
                 name: Swiatla-Salon
@@ -321,8 +315,8 @@ views:
               left: 34%
               transform: scale(0.80,0.80)
             badges:
-              - entity: light.sufit_jadalnia
-                tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia.yaml
+              - entity: light.swiatla_kuchnia
+                tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia1.yaml
                 icon: phu:sultan-group
                 name: Swiatla-Salon
                 card_mod:
@@ -355,7 +349,7 @@ views:
               transform: scale(0.80,0.80)
             badges:
               - entity: media_player.rzutnik
-                tap_action: !include FloorPlan3D/popup/swiatlo_kuchnia.yaml
+                tap_action: !include FloorPlan3D/popup/tv.yaml
                 double_tap_action:
                   action: toggle
                 icon: mdi:power
@@ -783,6 +777,32 @@ views:
           #           entity_picture: /local/floor_plan/drukarka_off.png
           #       type: custom:hui-element
           #       row_type: custom:button-card
+          ################################################################################################################
+          ###################################################### NA OBRAZKU ##############################################
+
+          # TEMP SALON
+          - entities:
+              - sensor.temperature_sensor
+            name: Salon
+            style:
+              top: 75%
+              left: 58%
+              transform: scale(0.5,0.5)
+              rotate: -73deg
+            type: custom:hui-element
+            row_type: custom:mini-graph-card
+          # TEMP KUCHNIA
+          - entities:
+              - sensor.temp_sensor_kuchnia_temperature
+            name: Kuchnia
+            style:
+              top: 78%
+              left: 20%
+              transform: scale(0.5,0.5)
+              rotate: 17deg
+            type: custom:hui-element
+            row_type: custom:mini-graph-card
+
         ################################################################################################################
         ######################################################### TLO ##################################################
         image: local/floor_plan/parter/parter.png
